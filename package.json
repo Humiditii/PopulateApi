@@ -2,10 +2,10 @@
   "name": "populattion_api",
   "version": "1.0.0",
   "description": "to update populations of a place",
-  "main": "index.js",
+  "main": "index.mjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
+    "start": "nodemon --experimental-modules index.mjs"
   },
   "author": "Babatunde Hameed Olakunle",
   "license": "ISC",

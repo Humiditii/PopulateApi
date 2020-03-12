@@ -1,6 +1,6 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const welcomeRoutes = require('./routes/welcome');
+import express from 'express';
+import bodyParser from 'body-parser';
+
 
 const port = 3333;
 
@@ -23,7 +23,11 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use('/api', welcomeRoutes);
+app.get('/' , (req, res, next) => {
+    res.json({
+        message: 'Welcome to populate API'
+    })
+});;
 
 
 app.listen(port, () => {

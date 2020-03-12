@@ -1,5 +1,5 @@
-exports.getWelcome = (req, res, next) => {
-    res.json({
-        message: 'Welcome to populate API'
-    });
-}
+// exports.getWelcome = (req, res, next) => {
+//     res.json({
+//         message: 'Welcome to populate API'
+//     });
+// }
