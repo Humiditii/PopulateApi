@@ -3,10 +3,7 @@ import bodyParser from 'body-parser';
 // import {authRoute} from './routes/auth.mjs';
 import { SignUp } from './controller/SignUp.mjs';
 
-const su = new SignUp()
-
-const port = 3333;
-
+const su = new SignUp();
 const app = express();
 
 
@@ -36,7 +33,7 @@ app.get('/' , (req, res, next) => {
     })
 });;
 
-
+const port = 3003;
 app.listen(port, () => {
     console.log('Application serving from port ' + port)
 })
