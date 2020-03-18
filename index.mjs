@@ -1,6 +1,9 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+// import {authRoute} from './routes/auth.mjs';
+import { SignUp } from './controller/SignUp.mjs';
 
+const su = new SignUp()
 
 const port = 3333;
 
@@ -22,6 +25,10 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     next();
 });
+
+app.post('/sign-up', (req, res,next)=> {
+    su.postSign(req,res,next)
+} );
 
 app.get('/' , (req, res, next) => {
     res.json({
