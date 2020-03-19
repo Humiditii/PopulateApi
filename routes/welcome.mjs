@@ -1,11 +1,10 @@
-// const express = require('express');
-
-// const router = express.Router();
-
-// router.get('/' , (req, res, next) => {
-//     res.json({
-//         message: 'Welcome to populate API'
-//     })
-// });
-
-// export default router;
+// export class Welcome {
+//     constructor(){
+//         this.getHomepage
+//     }
+//    getHomepage(req,res,next){
+//     return res.json({
+//             'Message': 'Welcome to populate API'
+//         })
+//    }
+// }

@@ -1,9 +1,8 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-// import {authRoute} from './routes/auth.mjs';
-import { SignUp } from './controller/SignUp.mjs';
+import authRoute from './routes/auth';
 
-const su = new SignUp();
+
 const app = express();
 const port = process.env.PORT || 3003;
 
@@ -23,9 +22,7 @@ app.use((req, res, next) => {
     next();
 });
 
-app.post('/sign-up', (req, res,next)=> {
-    su.postSign(req,res,next)
-} );
+app.use(authRoute);
 
 app.get('/' , (req, res, next) => {
     res.json({
