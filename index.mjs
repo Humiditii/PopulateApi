@@ -5,7 +5,7 @@ import { SignUp } from './controller/SignUp.mjs';
 
 const su = new SignUp();
 const app = express();
-
+const port = process.env.PORT || 3003;
 
 // for form data
 app.use(bodyParser.urlencoded({
@@ -33,7 +33,7 @@ app.get('/' , (req, res, next) => {
     })
 });;
 
-const port = 3003 || process.env.PORT;
+
 app.listen(port, () => {
     console.log('Application serving from port ' + port)
 })

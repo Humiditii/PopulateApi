@@ -36,15 +36,13 @@ export class SignUp {
             const findUser = User.find( user => user.email === UserData.email);
             if(!findUser){
                 UserData.id = User.length + 1;
-
                 User.push(UserData);
                     fs.writeFile(p, JSON.stringify(User), err => {
                         return res.status(201).json({
                             message: UserData.firstname + 'signed up successfully'
                         })
-                    //console.log(err);
+                
                     });
-    
             }else{
                 return res.status(200).json({
                     message: 'Email exixted'
