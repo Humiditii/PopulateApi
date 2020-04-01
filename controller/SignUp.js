@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import {validateEmail} from '../middleware/validate'
 
 
 const p = path.join(
@@ -9,7 +10,7 @@ const p = path.join(
 );
 
 
-const getProductsFromFile = cb => {
+const loadFileData = cb => {
     fs.readFile(p, (err, fileContent) => {
       if (err) {
         cb([]);
@@ -32,13 +33,19 @@ export class SignUp {
             email: req.body.email,
             password: req.body.password
         }
-        getProductsFromFile( User => {
+        loadFileData( User => {
             const findUser = User.find( user => user.email === UserData.email);
-            const pattern = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            // const pattern = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         
-            if(UserData.email.length < 6 || pattern.test(UserData.email) == false){
-                return res.status(401).json({
-                    message: 'Email format not supported'
+            // if(UserData.email.length < 6 || pattern.test(UserData.email) == false){
+            //     return res.status(401).json({
+            //         message: 'Email format not supported'
+            //     })
+            const ValidateMail = new validateEmail();
+            const passValidate = ValidateMail.mail(UserData.email)
+            if(passValidate.statusCode == 400){
+                return res.status(400).json({
+                    message: passValidate.message
                 })
             } else{
                 if(!findUser){
