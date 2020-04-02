@@ -48,7 +48,7 @@ export class SignUp {
                     User.push(UserData);
                         fs.writeFile(p, JSON.stringify(User), err => {
                             return res.status(201).json({
-                                message: UserData.firstname + 'signed up successfully'
+                                message: UserData.firstname + ' signed up successfully'
                             })
                     
                         });
