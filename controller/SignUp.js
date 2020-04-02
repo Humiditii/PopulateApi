@@ -35,12 +35,7 @@ export class SignUp {
         }
         loadFileData( User => {
             const findUser = User.find( user => user.email === UserData.email);
-            // const pattern = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        
-            // if(UserData.email.length < 6 || pattern.test(UserData.email) == false){
-            //     return res.status(401).json({
-            //         message: 'Email format not supported'
-            //     })
+            
             const ValidateMail = new validateEmail();
             const passValidate = ValidateMail.mail(UserData.email)
             if(passValidate.statusCode == 400){
