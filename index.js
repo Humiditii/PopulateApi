@@ -1,11 +1,10 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import authRoute from './routes/auth';
 
-
-const port = 3333;
 
 const app = express();
-
+const port = process.env.PORT || 3003;
 
 // for form data
 app.use(bodyParser.urlencoded({
@@ -22,6 +21,8 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     next();
 });
+
+app.use(authRoute);
 
 app.get('/' , (req, res, next) => {
     res.json({
